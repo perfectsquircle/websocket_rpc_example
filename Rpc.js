@@ -3,11 +3,14 @@ module.exports = class Rpc {
 
   constructor(socket) {
     this.socket = socket;
-
-    socket.on("message", this.#onmessage.bind(this));
+    socket.on("message", this.#onMessage.bind(this));
   }
 
-  #onmessage(msg) {
+  /**
+   * Handle all incoming messages. Match client requests to local procedures.
+   * @param {String} msg
+   */
+  #onMessage(msg) {
     console.log(`[message] Data received from client: ${msg}`);
     let request = JSON.parse(msg);
     let procedure = this[request.procedure];

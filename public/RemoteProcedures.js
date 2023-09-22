@@ -2,10 +2,10 @@ import { RpcClient } from "../RpcClient.js";
 
 export class RemoteProcedures extends RpcClient {
   async multiplyByOneThousand(number) {
-    return this.call("multiplyByOneThousand", [...arguments]);
+    return this.callRemoteProcedure("multiplyByOneThousand", [...arguments]);
   }
 
   async doSquareRoot(number) {
-    return this.call("doSquareRoot", [...arguments]);
+    return this.callRemoteProcedure("doSquareRoot", [...arguments]);
   }
 }
